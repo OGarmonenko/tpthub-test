@@ -17,7 +17,7 @@ const routes: Array<RouteConfig> = [
     component: MainPage,
   },
   {
-    path: CONSTANTS.ROUTES.DETAILS_PATH,
+    path: `${CONSTANTS.ROUTES.DETAILS_PATH}:id`,
     name: "DetailsPage",
     component: DetailsPage,
   },

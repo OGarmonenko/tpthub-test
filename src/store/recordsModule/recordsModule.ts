@@ -39,8 +39,8 @@ const recordsModule = {
       commit("SET_IS_LOADING", true);
       commit("SET_ERROR", null);
       try {
-        const ListRecords = await recordsService.getRecords();
-        commit("SET_LIST_RECORDS", ListRecords);
+        const result = await recordsService.getRecords();
+        commit("SET_LIST_RECORDS", result.products);
       } catch (err) {
         const error = err as AxiosError;
         commit("SET_ERROR", error.message);

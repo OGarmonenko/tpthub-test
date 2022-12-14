@@ -6,7 +6,7 @@ import { AxiosResponse } from "axios";
 const _productsUrl = CONSTANTS.API.PRODUCTS_PATH;
 
 const recordsService = {
-  async getRecords(): Promise<IRecord[]> {
+  async getRecords() {
     return apiService
       .get(_productsUrl, {
         params: {
