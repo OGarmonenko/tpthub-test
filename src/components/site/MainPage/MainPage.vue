@@ -1,5 +1,7 @@
 <template>
-  <div class="wrapper-main">Main Page</div>
+  <div class="wrapper-main">
+    <p>Main Page</p>
+  </div>
 </template>
 
 <script lang="ts">
