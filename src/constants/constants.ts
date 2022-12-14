@@ -6,6 +6,7 @@ const CONSTANTS = {
   ROUTES: {
     MAIN_PATH: "/",
     DETAILS_PATH: "/details/:id",
+    NOT_FOUND_PATH: "*",
   },
 };
 

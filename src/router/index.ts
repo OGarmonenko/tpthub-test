@@ -7,6 +7,8 @@ Vue.use(VueRouter);
 
 const DetailsPage = () =>
   import("@/components/site/DetailsPage/DetailsPage.vue");
+const NotFoundPage = () =>
+  import("@/components/site/NotFoundPage/NotFoundPage.vue");
 
 const routes: Array<RouteConfig> = [
   {
@@ -18,6 +20,11 @@ const routes: Array<RouteConfig> = [
     path: CONSTANTS.ROUTES.DETAILS_PATH,
     name: "DetailsPage",
     component: DetailsPage,
+  },
+  {
+    path: CONSTANTS.ROUTES.NOT_FOUND_PATH,
+    name: "NotFoundPage",
+    component: NotFoundPage,
   },
 ];
 
