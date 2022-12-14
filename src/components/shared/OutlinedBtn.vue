@@ -1,5 +1,5 @@
 <template>
-  <v-btn class="ma-2" outlined color="indigo" @click="setClick">
+  <v-btn class="ma-2" outlined color="red" @click="setClick">
     <slot></slot>
   </v-btn>
 </template>

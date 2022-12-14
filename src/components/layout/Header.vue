@@ -50,11 +50,11 @@ export default Vue.extend({
 <style scoped>
 .wrapper-header {
   width: 100%;
-  background-color: blue;
+  background-color: lavender;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 20px;
+  min-height: 60px;
 }
 .title {
   font-size: 22px;

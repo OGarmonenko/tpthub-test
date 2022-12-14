@@ -1,8 +1,8 @@
 <template>
-  <div id="app">
+  <v-app id="app">
     <Header :title="titleProject" />
     <router-view />
-  </div>
+  </v-app>
 </template>
 
 <script lang="ts">
