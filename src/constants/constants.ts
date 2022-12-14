@@ -5,7 +5,7 @@ const CONSTANTS = {
   },
   ROUTES: {
     MAIN_PATH: "/",
-    DETAILS_PATH: "/details/:id",
+    DETAILS_PATH: "/details",
     NOT_FOUND_PATH: "*",
   },
   NAME_PROJECT: "tptHub test",
