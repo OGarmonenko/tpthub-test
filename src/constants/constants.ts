@@ -1,11 +1,11 @@
 const CONSTANTS = {
   API: {
     BASE_URL: "https://dummyjson.com/",
-    PRODUCT_PATH: "products/",
+    PRODUCTS_PATH: "products/",
   },
   ROUTES: {
     MAIN_PATH: "/",
-    DETAILS_PATH: "/details",
+    DETAILS_PATH: "/details/:id",
   },
 };
 

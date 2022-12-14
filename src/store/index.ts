@@ -1,12 +1,17 @@
 import Vue from "vue";
 import Vuex from "vuex";
+import recordsModule, {
+  IStateTaskModule,
+} from "@/store/recordsModule/recordsModule";
 
 Vue.use(Vuex);
 
-export default new Vuex.Store({
-  state: {},
-  getters: {},
-  mutations: {},
-  actions: {},
-  modules: {},
+export interface IState {
+  recordsModule: IStateTaskModule;
+}
+
+export default new Vuex.Store<IState>({
+  modules: {
+    recordsModule,
+  },
 });

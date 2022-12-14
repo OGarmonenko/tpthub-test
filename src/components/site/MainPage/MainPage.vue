@@ -6,9 +6,18 @@
 
 <script lang="ts">
 import Vue from "vue";
+import { mapActions } from "vuex";
 
 export default Vue.extend({
   name: "MainPage",
+  methods: {
+    ...mapActions("recordsModule", {
+      readListRecords: "READ_LIST_RECORDS",
+    }),
+  },
+  async mounted() {
+    await this.readListRecords();
+  },
 });
 </script>
 
