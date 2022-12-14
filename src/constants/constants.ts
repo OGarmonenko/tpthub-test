@@ -8,6 +8,10 @@ const CONSTANTS = {
     DETAILS_PATH: "/details/:id",
     NOT_FOUND_PATH: "*",
   },
+  NAME_PROJECT: "tptHub test",
+  TITLE_BUTTON: {
+    backBtn: "Back",
+  },
 };
 
 export default CONSTANTS;
