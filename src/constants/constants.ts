@@ -21,5 +21,7 @@ const CONSTANTS = {
     "Brand",
     "Category",
   ],
+  CARD_LABELS: ["Price", "Rating", "Stock", "Brand", "Category"],
+  COUNTS_PAGES: [10, 20, 30],
 };
 export default CONSTANTS;

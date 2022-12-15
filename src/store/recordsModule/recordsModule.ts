@@ -8,19 +8,31 @@ export interface IStateTaskModule {
   selectedRecord: IRecord | null;
   isLoading: boolean;
   Error: string | null;
+  limit: number;
+  skip: number;
+  currentPage: number;
+  totalPage: number;
 }
 
 const recordsModule = {
-  state: {
-    listRecords: [],
-    selectedRecord: null,
-    isLoading: false,
-    Error: null,
+  state(): IStateTaskModule {
+    return {
+      listRecords: [],
+      selectedRecord: null,
+      isLoading: false,
+      Error: null,
+      limit: 10,
+      skip: 0,
+      currentPage: 1,
+      totalPage: 0,
+    };
   },
   getters: {
     LIST_RECORDS: (state: IStateTaskModule) => state.listRecords,
     SELECTED_RECORD: (state: IStateTaskModule) => state.selectedRecord,
     IS_LOADING: (state: IStateTaskModule) => state.isLoading,
+    TOTAL_PAGE: (state: IStateTaskModule) => state.totalPage,
+    CURRENT_PAGE: (state: IStateTaskModule) => state.currentPage,
     ERROR: (state: IStateTaskModule) => state.Error,
   },
   mutations: {
@@ -30,8 +42,12 @@ const recordsModule = {
       void (state.selectedRecord = data),
     SET_IS_LOADING: (state: IStateTaskModule, data: boolean) =>
       void (state.isLoading = data),
+    SET_TOTAL_PAGE: (state: IStateTaskModule, data: number) =>
+      void (state.totalPage = data / state.limit),
     SET_ERROR: (state: IStateTaskModule, data: string | null) =>
       void (state.Error = data),
+    SET_CURRENT_PAGE: (state: IStateTaskModule, data: number) =>
+      void (state.currentPage = data),
   },
 
   actions: {
@@ -41,6 +57,7 @@ const recordsModule = {
       try {
         const result = await recordsService.getRecords();
         commit("SET_LIST_RECORDS", result.products);
+        commit("SET_TOTAL_PAGE", result.total);
       } catch (err) {
         const error = err as AxiosError;
         commit("SET_ERROR", error.message);
