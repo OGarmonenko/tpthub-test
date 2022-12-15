@@ -1,8 +1,9 @@
 <template>
   <div class="wrapper-select">
-    <label class="label-select">{{ title }}</label>
+    <label class="label-select">{{ title }} </label>
     <select class="custom-select" @change="changeOption">
-      <option v-for="(opt, i) in options" :key="i" :value="opt">
+      <option>{{ selectedOption }}</option>
+      <option v-for="(opt, i) in optionsArr" :key="i" :value="opt">
         {{ opt }}
       </option>
     </select>
@@ -15,18 +16,21 @@ import Vue from "vue";
 export default Vue.extend({
   name: "CustomSelect",
   props: {
-    modelValue: {
-      type: String,
-    },
-    options: {
-      type: Array,
-      default: () => [],
-    },
+    setLimit: { type: Number },
+    options: { type: Array },
     title: String,
   },
   methods: {
     changeOption(e) {
       this.$emit("change", e.target.value);
+    },
+  },
+  computed: {
+    selectedOption() {
+      return this.setLimit;
+    },
+    optionsArr() {
+      return this.options.filter((el) => el !== this.setLimit);
     },
   },
 });
@@ -39,7 +43,6 @@ export default Vue.extend({
   gap: 8px;
 }
 .custom-select {
-  min-width: 40px;
   padding: 0 10px;
   border: 1px solid teal;
   height: 50px;
