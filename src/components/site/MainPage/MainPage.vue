@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper-main">
     <Skeleton v-if="isLoading" />
-    <ProductsTable v-else :arr="listRecords" @onClick="clickRow" />
+    <ProductsTable v-else :arr="listRecords" />
   </div>
 </template>
 
@@ -9,7 +9,6 @@
 import Vue from "vue";
 import { mapActions, mapGetters } from "vuex";
 import ProductsTable from "@/components/site/MainPage/ProductsTable/ProductsTable.vue";
-import CONSTANTS from "@/constants/constants";
 import Skeleton from "@/components/shared/Skeleton.vue";
 
 export default Vue.extend({
@@ -19,9 +18,6 @@ export default Vue.extend({
     ...mapActions("recordsModule", {
       readListRecords: "READ_LIST_RECORDS",
     }),
-    clickRow(id: string): void {
-      this.$router.push({ path: CONSTANTS.ROUTES.DETAILS_PATH + id });
-    },
   },
   computed: {
     ...mapGetters("recordsModule", {

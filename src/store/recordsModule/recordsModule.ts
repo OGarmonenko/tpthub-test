@@ -2,6 +2,7 @@ import { Commit } from "vuex";
 import { IRecord } from "@/models/models";
 import { AxiosError } from "axios";
 import recordsService from "@/services/recordsService";
+import CONSTANTS from "@/constants/constants";
 
 export interface IStateTaskModule {
   listRecords: IRecord[];
@@ -21,7 +22,7 @@ const recordsModule = {
       selectedRecord: null,
       isLoading: false,
       Error: null,
-      limit: 10,
+      limit: CONSTANTS.COUNT_ITEMS_ON_PAGE[0],
       skip: 0,
       currentPage: 1,
       totalPage: 0,
@@ -48,6 +49,8 @@ const recordsModule = {
       void (state.Error = data),
     SET_CURRENT_PAGE: (state: IStateTaskModule, data: number) =>
       void (state.currentPage = data),
+    SET_LIMIT: (state: IStateTaskModule, data: number) =>
+      void (state.limit = data),
   },
 
   actions: {

@@ -22,6 +22,7 @@ const CONSTANTS = {
     "Category",
   ],
   CARD_LABELS: ["Price", "Rating", "Stock", "Brand", "Category"],
-  COUNTS_PAGES: [10, 20, 30],
+  COUNT_ITEMS_ON_PAGE: [10, 20, 30],
+  COUNT_ON_PAGE: "Count on page:",
 };
 export default CONSTANTS;

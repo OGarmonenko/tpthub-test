@@ -21,7 +21,7 @@ export default Vue.extend({
 <style scoped>
 .wrapper-header {
   width: 100%;
-  background-color: blue;
+  background-color: teal;
   display: flex;
   align-items: center;
   justify-content: center;
