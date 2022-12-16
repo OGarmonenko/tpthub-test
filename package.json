@@ -14,8 +14,8 @@
     "roboto-fontface": "^0.10.0",
     "vue": "^2.6.14",
     "vue-router": "^3.5.1",
-    "vuex": "^3.6.2",
-    "vuetify": "^2.3.10"
+    "vuetify": "^2.3.10",
+    "vuex": "^3.6.2"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.4.0",

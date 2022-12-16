@@ -17,6 +17,7 @@ export default Vue.extend({
     paths: {
       type: Array,
       required: true,
+      default: () => [],
     },
   },
 });

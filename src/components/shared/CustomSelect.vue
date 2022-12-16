@@ -48,5 +48,6 @@ export default Vue.extend({
   height: 50px;
   outline: none;
   font-size: 15px;
+  cursor: pointer;
 }
 </style>

@@ -1,12 +1,12 @@
 <template>
   <section>
     <CardHeader
-      :path="obj.thumbnail"
-      :title="obj.title"
-      :description="obj.description"
+      :path="obj?.thumbnail"
+      :title="obj?.title"
+      :description="obj?.description"
     />
-    <List :obj="obj" :arr="arr" />
-    <ImageBlock :paths="obj.images" />
+    <List v-if="Object.keys(obj).length > 0" :obj="obj" :arr="arr" />
+    <ImageBlock :paths="obj?.images" />
   </section>
 </template>
 
@@ -29,7 +29,6 @@ export default Vue.extend({
   props: {
     obj: {
       type: Object,
-      required: true,
     },
   },
 });

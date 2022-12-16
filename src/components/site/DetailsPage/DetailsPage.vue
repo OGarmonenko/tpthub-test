@@ -2,9 +2,9 @@
   <div class="card">
     <Skeleton v-if="isLoading" />
     <div v-else>
-      <OutlinedBtn @onClick="toMainPage">
+      <CustomButton :style="outlinedBtn" @onClick="toMainPage">
         {{ backBtn }}
-      </OutlinedBtn>
+      </CustomButton>
       <DetailsCard :obj="selectedRecord" />
     </div>
   </div>
@@ -14,9 +14,9 @@
 import Vue from "vue";
 import { mapActions, mapGetters } from "vuex";
 import CONSTANTS from "@/constants/constants";
-import OutlinedBtn from "@/components/shared/OutlinedBtn.vue";
 import DetailsCard from "@/components/site/DetailsPage/DetailsCard/DetailsCard.vue";
 import Skeleton from "@/components/shared/Skeleton.vue";
+import CustomButton from "@/components/shared/CustomButton.vue";
 
 interface IDetailsPageData {
   backBtn: string;
@@ -25,9 +25,9 @@ interface IDetailsPageData {
 export default Vue.extend({
   name: "DetailsPage",
   components: {
+    CustomButton,
     Skeleton,
     DetailsCard,
-    OutlinedBtn,
   },
   data(): IDetailsPageData {
     return {
@@ -49,9 +49,9 @@ export default Vue.extend({
       Error: "ERROR",
     }),
   },
-  async mounted() {
-    await this.readSelectedRecords(this.$route.params.id);
-  },
+  // async mounted() {
+  //  const res = await this.readSelectedRecords(this.$route.params.id);
+  // },
 });
 </script>
 

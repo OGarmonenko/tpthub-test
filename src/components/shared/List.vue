@@ -21,11 +21,11 @@ export default Vue.extend({
   props: {
     obj: {
       type: Object,
-      required: true,
+      default: () => {},
     },
     arr: {
       type: Array,
-      required: true,
+      default: () => [],
     },
   },
 });

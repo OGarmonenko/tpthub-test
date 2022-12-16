@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <p>Page not found</p>
+  <div class="wrapper-not-found">
+    <h2>Page not found</h2>
   </div>
 </template>
 
@@ -10,4 +10,11 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.wrapper-not-found {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+</style>

@@ -17,5 +17,6 @@ module.exports = {
     "no-debugger": process.env.NODE_ENV === "production" ? "warn" : "off",
     "max-len": ["error", { ignoreComments: true, code: 120 }],
     "vue/multi-word-component-names": "off",
+    "@typescript-eslint/no-empty-function": "off",
   },
 };

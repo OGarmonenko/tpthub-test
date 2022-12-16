@@ -6,14 +6,9 @@ import { AxiosResponse } from "axios";
 const _productsUrl = CONSTANTS.API.PRODUCTS_PATH;
 
 const recordsService = {
-  async getRecords() {
+  async getRecords(params: Record<string, number>) {
     return apiService
-      .get(_productsUrl, {
-        params: {
-          skip: 5,
-          limit: 10,
-        },
-      })
+      .get(_productsUrl, { params })
       .then((response: AxiosResponse) => response.data);
   },
   async getRecord(params: number): Promise<IRecord> {

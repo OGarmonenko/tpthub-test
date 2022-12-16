@@ -44,7 +44,7 @@ const recordsModule = {
     SET_IS_LOADING: (state: IStateTaskModule, data: boolean) =>
       void (state.isLoading = data),
     SET_TOTAL_PAGE: (state: IStateTaskModule, data: number) =>
-      void (state.totalPage = data / state.limit),
+      void (state.totalPage = Math.ceil(data / state.limit)),
     SET_ERROR: (state: IStateTaskModule, data: string | null) =>
       void (state.Error = data),
     SET_CURRENT_PAGE: (state: IStateTaskModule, data: number) =>
@@ -54,11 +54,14 @@ const recordsModule = {
   },
 
   actions: {
-    async READ_LIST_RECORDS({ commit }: { commit: Commit }) {
+    async READ_LIST_RECORDS(
+      { commit }: { commit: Commit },
+      payload: Record<string, number>
+    ) {
       commit("SET_IS_LOADING", true);
       commit("SET_ERROR", null);
       try {
-        const result = await recordsService.getRecords();
+        const result = await recordsService.getRecords(payload);
         commit("SET_LIST_RECORDS", result.products);
         commit("SET_TOTAL_PAGE", result.total);
       } catch (err) {

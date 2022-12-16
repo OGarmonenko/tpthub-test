@@ -10,24 +10,16 @@
           @mouseover="setHighlightRow(i)"
           :class="{ 'hovered-row': i === hoveredRow }"
         >
-          <td>{{ obj.title }}</td>
-          <td>{{ obj.description }}</td>
-          <td>{{ obj.price }}</td>
-          <td>{{ obj.rating }}</td>
-          <td>{{ obj.stock }}</td>
-          <td>{{ obj.brand }}</td>
-          <td>{{ obj.category }}</td>
+          <td>{{ obj?.title }}</td>
+          <td>{{ obj?.description }}</td>
+          <td>{{ obj?.price }}</td>
+          <td>{{ obj?.rating }}</td>
+          <td>{{ obj?.stock }}</td>
+          <td>{{ obj?.brand }}</td>
+          <td>{{ obj?.category }}</td>
         </tr>
       </tbody>
     </table>
-    <FooterTable
-      :selectTitle="selectTitle"
-      :optionsArr="optionsArr"
-      @changeLimit="changeLimit"
-      @changePage="changePage"
-      :totalPage="totalPage"
-      :currentPage="currentPage"
-    />
   </div>
 </template>
 
@@ -35,19 +27,16 @@
 import CONSTANTS from "@/constants/constants";
 import Vue from "vue";
 import { IRecord } from "@/models/models";
-import { mapGetters, mapMutations } from "vuex";
-import HeaderTable from "@/components/shared/Table/HeaderTable.vue";
-import FooterTable from "@/components/shared/Table/FooterTable.vue";
+import { mapActions, mapGetters } from "vuex";
+import HeaderTable from "@/components/shared/HeaderTable.vue";
 
 export default Vue.extend({
   name: "ProductsTable",
-  components: { FooterTable, HeaderTable },
+  components: { HeaderTable },
   data() {
     return {
       tableHeaders: CONSTANTS.TABLE_HEADERS,
       hoveredRow: -1,
-      optionsArr: CONSTANTS.COUNT_ITEMS_ON_PAGE,
-      selectTitle: CONSTANTS.COUNT_ON_PAGE,
     };
   },
   props: {
@@ -57,17 +46,13 @@ export default Vue.extend({
     },
   },
   methods: {
-    ...mapMutations("recordsModule", {
-      setSelectedRecord: "SET_CURRENT_PAGE",
-      setLimit: "SET_LIMIT",
+    ...mapActions("recordsModule", {
+      readListRecords: "READ_LIST_RECORDS",
+      readSelectedRecord: "READ_SELECTED_RECORD",
     }),
-    changePage(index: number) {
-      this.setSelectedRecord(index);
-    },
-    changeLimit(item: number) {
-      this.setLimit(item);
-    },
-    handleClick(item: IRecord): void {
+
+    handleClick(item: IRecord) {
+      this.readSelectedRecord(item.id);
       this.$router.push({ path: CONSTANTS.ROUTES.DETAILS_PATH + item.id });
     },
     setHighlightRow(index: number): void {
@@ -76,8 +61,7 @@ export default Vue.extend({
   },
   computed: {
     ...mapGetters("recordsModule", {
-      totalPage: "TOTAL_PAGE",
-      currentPage: "CURRENT_PAGE",
+      selectedRecord: "SELECTED_RECORD",
     }),
   },
 });
@@ -105,9 +89,6 @@ export default Vue.extend({
 
   .table-body {
     cursor: pointer;
-  }
-  .footer-table {
-    display: flex;
   }
 }
 </style>

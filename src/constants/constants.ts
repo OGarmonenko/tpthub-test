@@ -10,7 +10,7 @@ const CONSTANTS = {
   },
   NAME_PROJECT: "tptHub test",
   TITLE_BUTTON: {
-    backBtn: "Back",
+    backBtn: "BACK",
   },
   TABLE_HEADERS: [
     "Title",

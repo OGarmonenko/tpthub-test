@@ -38,8 +38,6 @@ export default Vue.extend({
 <style scoped>
 .page-wrapper {
   display: flex;
-  margin-top: 15px;
-  width: 300px;
   gap: 10px;
 }
 .page {
